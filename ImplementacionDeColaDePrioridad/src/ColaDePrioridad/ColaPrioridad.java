@@ -24,8 +24,8 @@ public class ColaPrioridad<T extends Comparable<T>> {
 
 		if (CantObjetos > 1) {
 			while (((Comparable<T>) lista.get(padre)).compareTo(objeto) < 0) { 	// SI EL VALOR DEL PADRE ES MENOR QUE EL
-																				// VALOR DEL HIJO
-				Collections.swap(lista, padre, indice); 						// LOS INTERCAMBIO
+												// VALOR DEL HIJO
+				Collections.swap(lista, padre, indice); 			// LOS INTERCAMBIO
 				indice = padre;
 				padre = indice / 2;
 			}
@@ -48,18 +48,18 @@ public class ColaPrioridad<T extends Comparable<T>> {
 		int compararCon = indiceActual;
 		boolean soyMayor = false;
 
-		while (CantObjetos >= hijoIzq && !soyMayor) { 			// VOY A COMPARAR AL PADRE CON SUS HIJOS MIENRTRAS EXISTA AL MENOS EL HIJO IZQUIERDO
-																// O HASTA DETERMINAR QUE SOY MAYOR QUE MI HIJO O MIS DOS HIJOS EN CASO DE TENERLOS
-			compararCon = hijoIzq; 								// POR DEFECTO COMPARO CON HIJO IZQ QUE SE QUE EXISTE
+		while (CantObjetos >= hijoIzq && !soyMayor) { 				// VOY A COMPARAR AL PADRE CON SUS HIJOS MIENRTRAS EXISTA AL MENOS EL HIJO IZQUIERDO
+											// O HASTA DETERMINAR QUE SOY MAYOR QUE MI HIJO/HIJOS EN CASO DE TENERLO/OS
+			compararCon = hijoIzq; 						// POR DEFECTO COMPARO CON HIJO IZQ QUE SE QUE EXISTE
 
-			if (CantObjetos >= hijoDer) { 						// SI TAMBIEN EXISTE UN HIJO DERECHO COMPARO AL PADRE CON EL MAYOR DE SUS HIJOS
-				if (((Comparable<T>) lista.get(hijoDer)).compareTo(lista.get(hijoIzq)) > 0) { 		// SI HIJO DER > HIJO IZQ
-					compararCon = hijoDer; 															// COMPAROCON = HIJO DER
+			if (CantObjetos >= hijoDer) { 					// SI TAMBIEN EXISTE UN HIJO DERECHO COMPARO AL PADRE CON EL MAYOR DE SUS HIJOS
+				if (((Comparable<T>) lista.get(hijoDer)).compareTo(lista.get(hijoIzq)) > 0) { 	// SI HIJO DER > HIJO IZQ
+					compararCon = hijoDer; 							// COMPAROCION = HIJO DER
 				}
 			}
 
 			if (((Comparable<T>) lista.get(indiceActual)).compareTo(lista.get(compararCon)) < 0) { 	// COMPARO AL PADRE CON EL MAYOR DE SUS HIJOS
-				Collections.swap(lista, indiceActual, compararCon); 								// SI EL HIJO ES MAYOR LO INTERCAMBIO CON SU PADRE
+				Collections.swap(lista, indiceActual, compararCon); 				// SI EL HIJO ES MAYOR LO INTERCAMBIO CON SU PADRE
 				indiceActual = compararCon;
 				hijoIzq = 2 * indiceActual;
 				hijoDer = hijoIzq + 1;
